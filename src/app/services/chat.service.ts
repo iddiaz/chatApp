@@ -33,8 +33,9 @@ export class ChatService {
 
   agregarMensaje(texto: string) {
     let mensaje: Mensaje = {
-      nombre: 'Juan Carlos',
-      mensaje: texto
+      nombre: this.usuario.auth.displayName,
+      mensaje: texto,
+      uid: this.usuario.uid
     }
 
     // Necesitamos saber si Firebase lo hizo bien o no, por lo que tenemos que retornarlo.
