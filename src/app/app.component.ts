@@ -1,3 +1,4 @@
+import { ChatService } from './services/chat.service';
 import { Component } from '@angular/core';
 
 
@@ -9,5 +10,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   
   
-  constructor() {}
+  constructor(private chatService: ChatService) {}
 }

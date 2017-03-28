@@ -2,7 +2,6 @@
 <hr />
 <div class="app-mensajes" id="app-mensajes">
   
-
   
   <div *ngFor="let chat of chatService.chats | async" 
        [ngClass]="{'text-right': chatService.usuario.nombre === chat.nombre }">

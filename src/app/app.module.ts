@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
 import { firebaseConfig } from './../environments/firebase.config';
 import { ChatComponent } from './components/chat/chat.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChatComponent
+    ChatComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
