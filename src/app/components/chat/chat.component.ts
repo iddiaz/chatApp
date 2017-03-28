@@ -9,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 export class ChatComponent implements OnInit {
 
   mensaje: string = '';
-  constructor( private chatService: ChatService ) { }
+  elemento: any;
+
+  constructor( private chatService: ChatService ) { 
+   
+    this.chatService.cargarMensajes()
+      .subscribe( () => {
+        // console.log('mensajaes cargados...');
+        setTimeout(()=> this.elemento.scrollTop = this.elemento.scrollHeight, 100)
+        
+      });
+  }
 
   ngOnInit() {
+    this.elemento = document.getElementById('app-mensajes');
   }
 
   enviar() {
@@ -21,7 +32,12 @@ export class ChatComponent implements OnInit {
     
     // como el servicio devuelve una promesa:
     this.chatService.agregarMensaje( this.mensaje )
-      .then( () => console.log('Hecho!') )
+      .then( () => {
+        console.log('Hecho!')
+        this.mensaje = '';
+
+      } )
+
       .catch( (error) => console.log(error) );
       
   }

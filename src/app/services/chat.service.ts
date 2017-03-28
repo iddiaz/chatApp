@@ -6,10 +6,25 @@ import { Mensaje } from './../interfaces/mensaje.interface';
 export class ChatService {
 
   chats: FirebaseListObservable<any[]>;
+
+  usuario: any = {
+    nombre: 'Juan Carlos'
+  };
  
 
   constructor( private af: AngularFire ) {
     // this.chats = af.database.list('/chats');
+   }
+
+   cargarMensajes() {
+     // en documentación
+    this.chats = this.af.database.list('chats', {
+      query: {
+        limitToLast: 20,
+        orderByKey: true
+      }
+    });
+    return this.chats;
    }
 
    agregarMensaje( texto: string ) {
@@ -22,6 +37,14 @@ export class ChatService {
       // esto retorna una promesa no un observable.
       return this.chats.push( mensaje );
     
+   }
+
+   login() {
+
+   }
+
+   logOut() {
+     
    }
 
 }
